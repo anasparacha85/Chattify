@@ -1,0 +1,11 @@
+const express =require('express')
+const router=express.Router()
+const CHatCOntroller=require('../Controller/ChatController')
+const ProtectedUser = require('../Middleware/ProtectedUser')
+router.route('/AccessChat/:id').post(ProtectedUser,CHatCOntroller.AccessChat)
+router.route('/FetchAllChats').get(ProtectedUser,CHatCOntroller.fetchAllChats)
+router.route('/CreateGroup').post(ProtectedUser,CHatCOntroller.createGroup)
+router.route('/FetchGroupChat/:id').get(ProtectedUser,CHatCOntroller.fetchGroupChats)
+router.route('/AddMembertoGroup/:UserId/:ChatId').patch(ProtectedUser,CHatCOntroller.AddMembertoGroup)
+router.route('/RemoveMemberFromGroup/:UserId/:ChatId').patch(ProtectedUser,CHatCOntroller.removeFromGroup)
+module.exports=router
