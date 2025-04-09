@@ -14,7 +14,10 @@ const server = http.createServer(app); // <-- use http server
 // Middlewares
 app.use(cors());
 app.use(bodyparser.json());
+app.get('/',(req,res)=>{
+  res.status(200).json({Message:"server is Running"})
 
+})
 // Routes
 app.use('/api/auth', Authrouter);
 app.use('/api/chat', ChatRouter);
