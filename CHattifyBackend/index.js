@@ -6,6 +6,7 @@ const connectdb = require('./Utils/db');
 const Authrouter = require('./Router/AuthRouter');
 const ChatRouter = require('./Router/ChatRouter');
 const MessageRouter = require('./Router/MessageRouter');
+require('dotenv').config()
 
 const app = express();
 const server = http.createServer(app); // <-- use http server
@@ -29,7 +30,8 @@ const io = require('socket.io')(server, {
 });
 
 // DB connection + Start Server
-const port = 9000;
+const port = process.env.PORT || 9000;
+
 connectdb().then(() => {
   server.listen(port, () => {
     console.log("Server started on port", port);
