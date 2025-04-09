@@ -4,6 +4,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import AuthLeftSide from "../../Components/AuthLeftSIde";
 import { useDispatch, useSelector } from "react-redux"
 import { RegisterUser,LoginUser } from "../../Slices/AuthSlice";
+import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import { setLoading } from "../../Slices/AuthSlice";
 
 
 
@@ -29,16 +32,18 @@ const REEGISTER = () => {
        .then((data)=>{
         console.log(data);
         if(data.SuccessMessage){
-          alert(data.SuccessMessage)
+          toast.success(data.SuccessMessage)
           navigate('/')
         }
         if(data.FailureMessage){
-          alert(data.FailureMessage)
+          toast.error(data.FailureMessage)
         }
         
        }).catch((error)=>{
         console.log(error);
         
+       }).finally(()=>{
+        dispatch(setLoading(false))
        })
     }
   return (

@@ -33,7 +33,7 @@ const ChatArea = ({ selectedUser,onBack }) => {
    
     const [typing, settyping] = useState(false)
     const [isTyping, setisTyping] = useState(false)
-    // console.log("selectedcaht",SelectedChat);
+     console.log("selectedcaht",SelectedChat);
   
     const ChatId=SelectedChat?SelectedChat[0]?._id:1
     // console.log("hello ",ChatId);
@@ -162,7 +162,9 @@ const ChatArea = ({ selectedUser,onBack }) => {
         body:JSON.stringify({content:message,ChatId:ChatId})
       }).then((res)=>{
         // console.log(res);
-        
+        if(res.ok){
+          setMessage("")
+        }
         return res.json()
       }).then((data)=>{
         console.log(data.message);
@@ -198,6 +200,7 @@ const ChatArea = ({ selectedUser,onBack }) => {
           if(!notifications?.includes(NewMessageReceived) ){
             dispatch(setNotifications([NewMessageReceived,...notifications]))
           }
+          
   
         }
         else{

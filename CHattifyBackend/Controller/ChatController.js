@@ -34,7 +34,7 @@ const AccessChat = async (req, res) => {
             console.log("🔹 Created Chat: ", Chats);
 
             // Populate the newly created chat
-            Chats = await Chat.findOne({_id:Chats._id}).populate('users', '-password');
+            Chats = await Chat.find({_id:Chats._id}).populate('users', '-password');
             console.log("🔹 Populated Chat: ", Chats);
         }
 

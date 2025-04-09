@@ -135,7 +135,10 @@ Groups.map((value)=>{
     
 
   }
+ 
+  
   useEffect(() => {
+    console.log("i am a notify",notifications);
   if(notifications?.length){
     dispatch(setNotifyCount(notifications?.length))
   }

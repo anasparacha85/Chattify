@@ -62,7 +62,7 @@ const Login=async (req,res)=>{
         }
         const comparepassword=await user.comparePassword(password)
         if(!comparepassword){
-            return response.status(401).json({FailureMessage:"Invalid Credentials"})
+            return res.status(401).json({FailureMessage:"Invalid Credentials"})
         }
         res.status(201).json({SuccessMessage:"Login SuccessFull",token:await user.generateToken()})
     } catch (error) {

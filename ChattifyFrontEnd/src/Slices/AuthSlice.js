@@ -149,7 +149,11 @@ const Authslice =createSlice(
             },
             setChats:(state,action)=>{
                 state.Chats=action.payload
+            },
+            setLoading:(state,action)=>{
+                state.loading=action.payload
             }
+            
         },
         extraReducers:(builder)=>{
             builder
@@ -159,8 +163,9 @@ const Authslice =createSlice(
             })
             .addCase(RegisterUser.fulfilled,(state,action)=>{
                 state.loading=false;
-                state.JwtToken=action.payload;
-                // localStorage.setItem('Jwt Token',action.payload)
+              
+              
+                
             })
             .addCase(RegisterUser.rejected,(state,action)=>{
                 state.loading=false;
@@ -224,6 +229,6 @@ const Authslice =createSlice(
     }
 )
 
-export const {LogoutTrue,setUser,setUsers,setFilterUser,setChats,setAllUsers}=Authslice.actions
+export const {LogoutTrue,setUser,setUsers,setFilterUser,setChats,setAllUsers, setLoading}=Authslice.actions
 export default Authslice.reducer;
 
