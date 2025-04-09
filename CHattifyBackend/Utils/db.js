@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
-const url="mongodb+srv://amiranas761:eKmGsqBdGifD21JR@cluster0.edrnn.mongodb.net/Chattify?retryWrites=true&w=majority&appName=Cluster0"
+require('dotenv').config()
+const url=process.env.MONGODB_URL
 
 const connectdb=async()=>{
 try {
